@@ -1,0 +1,21 @@
+.edit {
+    background-image: url(./../../image/baseline-border_color-24px.svg);
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+}
+
+.edit:hover {
+    background-color: gray;
+}
+
+.delete {
+    background-image: url(./../../image/baseline-delete-24px.svg);
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+}
+
+.delete:hover {
+    background-color: gray;
+}

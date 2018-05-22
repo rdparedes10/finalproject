@@ -1,14 +1,17 @@
 <br/>
 <br/>
 <div class="div-container">
+    Usuario: admin Password: Todo1
+</div>
+<div class="div-container">
     <mat-form-field hintLabel="Max 10 characters">
-        <input matInput #input maxlength="10" placeholder="Enter your user name">
+        <input matInput #input maxlength="10" placeholder="Enter your user name" (change)="getUserName($event.target.value)">
         <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
     </mat-form-field>
 </div>
 <div class="div-container">
     <mat-form-field>
-        <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
+        <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'" (change)="getPass($event.target.value)">
         <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
     </mat-form-field>
 

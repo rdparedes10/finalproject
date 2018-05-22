@@ -1,3 +1,58 @@
-<p>
-  employee works!
-</p>
+<h1>Employees</h1>
+<div class="mat-elevation-z8" [hidden]="isOn">
+    <mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
+
+        <!-- Id Column -->
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.id}}</mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.name}}</mat-cell>
+        </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="company">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Company</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.company}}</mat-cell>
+        </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="favoriteColor">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Favorite Color</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.favoriteColor}}</mat-cell>
+        </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="project">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Project</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.project}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="age">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Age</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.age}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="EditOrDelete">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Edit/Delete</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <span (click)="editEmployee(row)" class="edit"></span>
+                <span (click)="deleteEmployee(row)" class="delete"></span>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <mat-paginator #paginator [length]="dataSource.data.length" [pageIndex]="0" [pageSize]="50" [pageSizeOptions]="[25, 50, 100, 250]">
+    </mat-paginator>
+</div>
+<div [hidden]="isOn">
+    <button (click)="addEmployee()" mat-button>Add Employee</button>
+</div>
+<div [hidden]="!isOn">
+    <button (click)="isOn=!isOn" mat-button>Back</button>
+</div>
+<div *ngIf="employeeCrud || flag" [hidden]="!isOn">
+    <app-employee-crud [employee]="employeeCrud" [birthday]="date" (employeeCRUD)="addOrUpdateEmployee($event)"></app-employee-crud>
+</div>

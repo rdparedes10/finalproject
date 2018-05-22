@@ -1,0 +1,31 @@
+<div class="div-container">
+    <div [hidden]="isValid" class="div-container error">
+        Error enter valid data
+    </div>
+    <div class="example-container">
+        <mat-form-field>
+            <input #input0 matInput placeholder="Id" [value]="(project ? project.id: projectEmpty) ">
+        </mat-form-field>
+    </div>
+
+    <div class="example-container">
+        <mat-form-field>
+            <input #input1 matInput placeholder="Name" [value]="(project ? project.name: projectEmpty) ">
+        </mat-form-field>
+
+    </div>
+    <div class="example-container">
+        <mat-form-field>
+            <input #input2 matInput placeholder="Client Name" [value]="(project ? project.clientName: projectEmpty) ">
+        </mat-form-field>
+
+    </div>
+    <div class="example-container">
+        <mat-form-field>
+            <input #input3 matInput placeholder="Team Size" [value]="(project ? project.teamSize: projectEmpty) ">
+        </mat-form-field>
+
+    </div>
+
+    <button mat-button (click)="addProject([input0.value,input1.value,input2.value, input3.value])">Add project</button>
+</div>

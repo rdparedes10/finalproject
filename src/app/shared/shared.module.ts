@@ -1,10 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ProjectsModule } from '../projects/projects.module';
+import { EmployeesModule } from '../employees/employees.module';
+import { AdministrateService } from './administrate.service';
+
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    ProjectsModule,
+    EmployeesModule
   ],
-  declarations: []
+  declarations: [],
+  providers:[AdministrateService]
 })
 export class SharedModule { }

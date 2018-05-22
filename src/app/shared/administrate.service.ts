@@ -1,22 +1,30 @@
 import { Injectable } from '@angular/core';
-
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs/internal/Observable';
 @Injectable({
   providedIn: 'root'
 })
 export class AdministrateService {
 
-  constructor() { }
-
-  //Agrega Project, Employee, Users
-  insertData(){
-
+  constructor(private http:HttpClient){
   }
-  //Actualiza informacion de Project, Employee, Users
-  updateData(){
-
+  consultar<T>(url:string): Observable<T[]> {
+		return this.http.get<T[]>(url).pipe(
+			map((collection: T[]) => {
+        return collection;
+			})
+    );
   }
-  //Actualiza informacion de Project, Employee, Users
-  deteleData(){
-
+  //Agrega Project, Employee
+  insertar(url:string,data) {
+    this.http.put(url, data).subscribe(
+      console.log
+      );
+  }
+  //Borrar informacion de Project, Employee
+  deteleData(url:string,id:string){
+    let urlCon = url + "/" + id;
+    this.http.delete(urlCon);
   }
 }

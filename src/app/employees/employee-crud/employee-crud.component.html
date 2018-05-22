@@ -1,0 +1,55 @@
+<div class="div-container">
+    <div [hidden]="isValid" class="div-container error">
+        Error enter valid data
+    </div>
+    <div class="div-container">
+        <mat-form-field>
+            <input #input0 matInput placeholder="Id" [value]="(employee ? employee.id: employeeEmpty) ">
+        </mat-form-field>
+    </div>
+
+    <div class="div-container">
+        <mat-form-field>
+            <input #input1 matInput placeholder="Name" [value]="(employee ? employee.name : employeeEmpty )">
+        </mat-form-field>
+
+    </div>
+    <div class="div-container">
+        <mat-form-field>
+            <input #input2 matInput placeholder="Company" [value]="(employee ? employee.company : employeeEmpty )">
+        </mat-form-field>
+    </div>
+    <div class="div-container">
+        <mat-form-field>
+            <input #input3 matInput placeholder="Age" [value]="(employee ? employee.age : employeeEmpty) ">
+        </mat-form-field>
+
+    </div>
+    <div class="div-container">
+        <mat-form-field>
+            <input #input4 matInput [matDatepicker]="picker" [value]="birthday.value" placeholder="Choose a date of Birthday">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+    </div>
+    <div class="div-container">
+        <mat-form-field>
+            <input #input5 matInput placeholder="Favorite Color" [value]="(employee ? employee.favoriteColor : employeeEmpty) ">
+        </mat-form-field>
+
+    </div>
+    <div class="div-container">
+        <mat-form-field>
+            <mat-select #input6 placeholder="Project" [value]="(employee ? employee.project : employeeEmpty)">
+                <mat-option *ngFor="let project of projects$" [value]="project.name">
+                    {{project.name}}
+                </mat-option>
+            </mat-select>
+            <!-- <input matInput placeholder="Project" [value]="(employee ? employee.project : employeeEmpty )"> -->
+        </mat-form-field>
+
+    </div>
+
+    <button mat-button (click)="addEmployee([input0.value,input1.value,input2.value, input3.value, input4.value, input5.value, input6.value])">Add Employee</button>
+</div>

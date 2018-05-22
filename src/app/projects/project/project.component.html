@@ -1,3 +1,49 @@
-<p>
-  project works!
-</p>
+<h1>Project</h1>
+<div class="mat-elevation-z8" [hidden]="isOn">
+    <mat-table #table [dataSource]="dataSource" matSort aria-label="Elements">
+
+        <!-- Id Column -->
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Id</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.id}}</mat-cell>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.name}}</mat-cell>
+        </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="clientName">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Client Name</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.clientName}}</mat-cell>
+        </ng-container>
+        <!-- Name Column -->
+        <ng-container matColumnDef="teamSize">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Team Size</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{row.teamSize}}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="EditOrDelete">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Edit/Delete</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+                <span (click)="editProject(row)" class="edit"></span>
+                <span (click)="deleteProject(row)" class="delete"></span>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+    <mat-paginator #paginator [length]="dataSource.data.length" [pageIndex]="0" [pageSize]="50" [pageSizeOptions]="[25, 50, 100, 250]">
+    </mat-paginator>
+</div>
+<div [hidden]="isOn">
+    <button (click)="addProject()" mat-button>Add project</button>
+</div>
+<div [hidden]="!isOn">
+    <button (click)="isOn=!isOn" mat-button>Back</button>
+</div>
+<div *ngIf="projectCrud || flag" [hidden]="!isOn">
+    <app-project-crud [project]="projectCrud" [birthday]="date" (projectCRUD)="addOrUpdateProject($event)"></app-project-crud>
+</div>
