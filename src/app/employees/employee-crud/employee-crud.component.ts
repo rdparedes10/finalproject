@@ -20,14 +20,18 @@ export class EmployeeCRUDComponent implements OnInit {
   dateAux ;
   date;
 
-  constructor(){
-    
+  constructor(private administrateService:AdministrateService ){
   }
-  ngOnInit() {}
+    
+  ngOnInit() {
+   const assingProject = (projects) => {
+      this.projects$ = projects;
+    };
+    this.administrateService.consultar<Project[]>("api/projects").subscribe(assingProject); 
+  }
 
   addEmployee(valueInput){
     let employeeAux = new Employee();
-    this.isValid = true;
     for(var i=0 ; i < valueInput.length ; i++){
       if(valueInput[i] === this.employeeEmpty){
         this.isValid = false;
@@ -42,7 +46,7 @@ export class EmployeeCRUDComponent implements OnInit {
       employeeAux.birthday = valueInput[4];
       employeeAux.favoriteColor = valueInput[5];
       employeeAux.project = valueInput[6];
-      this.employeeCRUD.emit(employeeAux);
     }
+    this.employeeCRUD.emit(employeeAux);
   }
 }

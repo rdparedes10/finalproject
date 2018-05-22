@@ -1,6 +1,6 @@
 .edit {
-    background-image: url(./../../image/baseline-border_color-24px.svg);
-    background-repeat: no-repeat;
+    /* background-image: url(./../../image/baseline-border_color-24px.svg);
+    background-repeat: no-repeat; */
     width: 40px;
     height: 40px;
 }
@@ -10,8 +10,8 @@
 }
 
 .delete {
-    background-image: url(./../../image/baseline-delete-24px.svg);
-    background-repeat: no-repeat;
+    /* background-image: url(./../../image/baseline-delete-24px.svg);
+    background-repeat: no-repeat; */
     width: 40px;
     height: 40px;
 }

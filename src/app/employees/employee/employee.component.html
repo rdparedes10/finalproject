@@ -35,8 +35,8 @@
         <ng-container matColumnDef="EditOrDelete">
             <mat-header-cell *matHeaderCellDef mat-sort-header>Edit/Delete</mat-header-cell>
             <mat-cell *matCellDef="let row">
-                <span (click)="editEmployee(row)" class="edit"></span>
-                <span (click)="deleteEmployee(row)" class="delete"></span>
+                <mat-icon class="edit" (click)="editEmployee(row)">edit</mat-icon>
+                <mat-icon class="delete" (click)="deleteEmployee(row)">delete</mat-icon>
             </mat-cell>
         </ng-container>
 
